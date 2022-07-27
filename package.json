@@ -1,0 +1,17 @@
+{
+  "name": "cli-easygit",
+  "version": "1.0.0",
+  "description": "CLI to make git easy for developers",
+  "main": "main.sh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"./main.sh"
+  },
+  "keywords": [
+    "CLI",
+    "Git",
+    "github"
+  ],
+  "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
+  "license": "MIT"
+}
