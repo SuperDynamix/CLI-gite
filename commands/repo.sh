@@ -1,12 +1,11 @@
-# This to init repo base
-# make dir then init git
-# add a remote for this git
 
 initrepo(){
-    echo -e -n "${GREEN}Directory name for this repo: ${COLOR}"
-    read name
-    echo -e -n "${GREEN}Do you want to init git for this repo? Y/N: "
-    read state
+    
+    if [ [mkdir $name] -eq -1 ]
+    then 
+    echo -e "${RED}The directory exist, try to remove the directory use rmdir -f $name"
+    else
+    
     if [ "$state" == "y" ]  || [ "$state" == "Y" ] || [ -z "$state" ]
     then
         state=true
@@ -14,25 +13,34 @@ initrepo(){
         state=false
     fi
 
-    echo -e -n "${GREEN}What's the repo's remote? (ignore if none exist):$COLOR"
+    echo -e -n "${GREEN}What's the repo's remote? (ignore if none exist): $COLOR"
     read remote
     if [ ! -z "$remote" ]
     then
-        echo -e -n "${GREEN}What's the Alias for this remote (defualt: origin)$COLOR"
+        echo -e -n "${GREEN}What's the alias for this remote (defualt: origin): $COLOR"
         read als    
     fi
-    excinitrepo $name $state $remote $als
+    excinitrepo $state $remote $als
+    fi
 }
 excinitrepo(){
-    mkdir $1
-    cd $1
-    if [ $2==true ]
+
+    if [ $1==true ]
         then 
         git init > /dev/null
     fi
-    if [ ! -z $3]
+    if [ ! -z $2 ]
         then
-        git remote add if [! -z $4 ] then $4 else origin fi 
-    fi
-    echo -e "${YELLOW}Directory is created with init git use code . to open VSCode"
+        if [ ! -z $3 ]
+        then 
+            git remote add $3 $2 > /dev/null
+        else
+            git remote add origin $2 > /dev/null
+        fi
+        
+        echo -e "${YELLOW}Remote established within the directory"
+    else
+        echo -e "${YELLOW}Directory is created with init git use code . to open VSCode"
+    fi  
+
 }

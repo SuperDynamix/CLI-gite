@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source commands/repo.sh
+source commands/initrepo.sh
 source config.sh
 chmod +x ./main.sh
 
