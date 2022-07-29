@@ -13,14 +13,19 @@ I used NPM package to publish it, you can make your own one cope it and go a hea
 https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key
 # installation
 ## linux
-1. sudo npm i -g cli-gite
+1. `sudo npm i -g cli-gite`
 why -g to use it everywhere
 2. then install it
-. ~/../../usr/local/lib/node_modules/cli-gite/install.sh
-[img]
-now you can use gite
+`. ~/../../usr/local/lib/node_modules/cli-gite/install.sh`
+
+![Screenshot from 2022-07-29 21-25-10](https://user-images.githubusercontent.com/42272376/181830387-cc807cdd-09dc-4d2e-99ab-c8cd34fd6076.png)
+
+now you can use `gite`
+
+![Screenshot from 2022-07-29 21-26-11](https://user-images.githubusercontent.com/42272376/181830569-bc992c0a-49d0-49c0-a099-48c4179cf593.png)
+
 ## windows
-[  ] not ready, stay tuned...
+- [ ] not ready, stay tuned...
 
 # Features
 - creating dir with init git
@@ -34,6 +39,7 @@ now you can use gite
 - repo
 to init dir with git and remote
 - push 
+pushing to spcific branch and automate fetching if there.
 # Contributing
 I welcome all contributions! Feel free to open an issue or submit a PR!
 # License
