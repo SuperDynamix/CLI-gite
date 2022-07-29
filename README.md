@@ -6,7 +6,8 @@
 This is a smaple CLI to automate ragular git tasks, with many commands.
 it's build with bash so it's so compitalbe with liunx, I will provide how to setup it on Windows
 I used NPM package to publish it, you can make your own one cope it and go a head
-[img]
+
+
 # Requirements
 - NPM
 - GPG ( optional ) see how to install it on your OS 
@@ -20,7 +21,7 @@ why -g to use it everywhere
 
 ![Screenshot from 2022-07-29 21-25-10](https://user-images.githubusercontent.com/42272376/181830387-cc807cdd-09dc-4d2e-99ab-c8cd34fd6076.png)
 
-now you can use `gite`
+now you can use `gite` :tada:
 
 ![Screenshot from 2022-07-29 21-26-11](https://user-images.githubusercontent.com/42272376/181830569-bc992c0a-49d0-49c0-a099-48c4179cf593.png)
 
@@ -28,9 +29,9 @@ now you can use `gite`
 - [ ] not ready, stay tuned...
 
 # Features
-- creating dir with init git
-- add remote
-- adding gpg key to your commits
+- [ :heavy_check_mark: ] creating dir with init git
+- [ :heavy_check_mark: ] add remote
+- [ :heavy_check_mark: ] adding gpg key to your commits
 - [ ] push to any branch without do an adding just put your commit
 - [ ] short-hand push
 - [ ] auto fetching if there's something to fetch
