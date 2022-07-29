@@ -11,6 +11,7 @@ setup(){
     echo "alias gite='. ~/../../usr/local/lib/node_modules/cli-gite/bin/main.sh'" >> ~/.bash_aliases
     echo "alias Gite='. ~/../../usr/local/lib/node_modules/cli-gite/bin/main.sh'" >> ~/.bash_aliases
     echo -e "Every things is done👌, Try Gite on your terminal"
+    #. ~/../../usr/local/lib/node_modules/cli-gite && ./install.sh
 }
 
 echo -e "${GREEN}Installing CLI Gite..."

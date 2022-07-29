@@ -1,7 +1,7 @@
 {
   "name": "cli-gite",
   "version": "1.0.1",
-  "description": "CLI to make git easy for developers with GPG key signed commits, and A lot to automate commands",
+  "description": "CLI to make git easy for developers with GPG key signed commits, and A lot automated commands",
   "main": "main.sh",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,14 @@
     "Git",
     "github"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahmoudgalalz/cli-gite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mahmoudgalalz/cli-gite/issues"
+  },
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/mahmoudgalalz/my_package"
 }
