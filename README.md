@@ -4,8 +4,8 @@
 # introduction
 > Hello ppl
 This is a smaple CLI to automate ragular git tasks, with many commands.
-it's build with bash so it's so compitalbe with liunx, I will provide how to setup it on Windows
-I used NPM package to publish it, you can make your own one cope it and go a head
+it's build with bash so it's so compitalbe with liunx, I will provide how to setup it on Windows.
+I used NPM package to publish it, you can make your own, copy it and go a head
 
 # Requirements
 - NPM
