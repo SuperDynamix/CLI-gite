@@ -2,6 +2,7 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
+source $DIR/commands/pushing.sh
 source $DIR/config.sh
 
 # GPG settings 
@@ -13,7 +14,7 @@ case $1 in
         initrepo
     ;;
     push|-p)
-    echo -e "${GREEN}push${COLOR}"
+      push
     ;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.

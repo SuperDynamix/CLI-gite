@@ -3,7 +3,7 @@
 #chmod +x install.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/bin/config.sh
-
+GPGstate=false
 setup(){
 #via NPM package
 #usr/local/node_module/${packageName}/bin/main.sh
@@ -20,6 +20,7 @@ read st
 
 if [ "$st" == "y" ] || [ "$st" == "Y" ] || [ -z $st ] 
 then 
+    GPGstate=true
     echo -e "${GREEN}Read the Gite documantion about GPG KEY"
     echo -e -n "${GREEN}What's your GPG KEY: "
     read KEY
@@ -33,4 +34,4 @@ then
     setup
 
 fi
-
+echo "GPG_STATE=$GPGstate" >> $DIR/bin/config.sh
