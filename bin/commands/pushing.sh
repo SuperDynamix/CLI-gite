@@ -21,7 +21,7 @@ push(){
     git checkout $branch > /dev/null
     git add -A
     echo -e "${GREEN}Added all file that been modified..${COLOR}"
-  if [$GPG_STATE=true]
+  if [ $GPG_STATE -eq true ]
   then git commit -S -m "${commit}" > /dev/null
   echo -e "${GREEN}Committing using GPG signature${COLOR}"
   else git commit -m "${commit}" >/dev/null
