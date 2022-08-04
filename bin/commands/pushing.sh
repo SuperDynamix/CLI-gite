@@ -2,8 +2,6 @@
 # basic pushing
 # short-hand push
 #interactive selection for branches and remotes
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 push(){
     # The process 
     #1- add all (git add -A)
