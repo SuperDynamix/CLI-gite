@@ -40,13 +40,17 @@ now you can use `gite` :tada:
 
   to init dir with git and remote
 - `gite push`
-
-- `gite push origin main "commit"
-   a short hand from push with auto fetching detection
+- 
   pushing to spcific branch and automate fetching if there.
+
+- `gite push origin main "commit" `
+
+   a short hand from push with auto fetching detection
+   
 - `gite update`
 
   to install the last version
+  
 - `gite version` `gite -v`  
 
 
