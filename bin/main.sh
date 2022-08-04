@@ -12,12 +12,18 @@ source config.sh
 case $1 in
     repo)
         initrepo
-    ;;
+;;
     push|-p)
       push
-    ;;
+;;
     log)
     cat logs/$2
+;;
+    version|-v)
+    echo $(node version.ts)
+;;
+    update)
+    sudo npm i -g cli-gite
 ;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.
