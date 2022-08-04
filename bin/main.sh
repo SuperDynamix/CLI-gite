@@ -3,7 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
 source $DIR/commands/pushing.sh
-source $DIR/config.sh
+source config.sh
 
 # GPG settings 
 #setup the CLI
@@ -17,7 +17,7 @@ case $1 in
       push
     ;;
     log)
-    cat $DIR/logs/push_err.log
+    cat logs/$2
 ;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.
