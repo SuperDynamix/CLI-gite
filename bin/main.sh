@@ -16,6 +16,9 @@ case $1 in
     push|-p)
       push
     ;;
+    log)
+    cat $DIR/logs/push_err.log
+;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.
 Read the doc on https://github.com/Mahmoudgalalz/CLI-egit
