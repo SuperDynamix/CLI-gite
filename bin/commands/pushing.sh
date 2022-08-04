@@ -28,7 +28,7 @@ push(){
   echo -e"${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
 fi
 
-  git push $remote $branch 2>$DIR/bin/logs/push_err.log
+  git push $remote $branch 2>$DIR/logs/push_err.log
 
 if [ -f "$DIR/bin/logs/push_err.log" ]
   then psh=$(node $DIR/bin/regex.ts)
