@@ -36,10 +36,20 @@ now you can use `gite` :tada:
 - [ ] auto fetching if there's something to fetch
 
 # Commands
-- repo
-to init dir with git and remote
-- push 
-pushing to spcific branch and automate fetching if there.
+- `gite repo`
+
+  to init dir with git and remote
+- `gite push`
+
+- `gite push origin main "commit"
+   a short hand from push with auto fetching detection
+  pushing to spcific branch and automate fetching if there.
+- `gite update`
+
+  to install the last version
+- `gite version` `gite -v`  
+
+
 # Contributing
 I welcome all contributions! Feel free to open an issue or submit a PR!
 # License
