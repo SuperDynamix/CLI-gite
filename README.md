@@ -31,15 +31,29 @@ now you can use `gite` :tada:
 - [ :heavy_check_mark: ] creating dir with init git
 - [ :heavy_check_mark: ] add remote
 - [ :heavy_check_mark: ] adding gpg key to your commits
-- [ ] push to any branch without do an adding just put your commit
+- [ :heavy_check_mark: ] push to any branch without do an adding just put your commit
 - [ ] short-hand push
-- [ ] auto fetching if there's something to fetch
+- [ :heavy_check_mark: ] auto fetching if there's something to fetch
 
 # Commands
-- repo
-to init dir with git and remote
-- push 
-pushing to spcific branch and automate fetching if there.
+- `gite repo`
+
+  to init dir with git and remote
+- `gite push`
+- 
+  pushing to spcific branch and automate fetching if there.
+
+- `gite push origin main "commit" `
+
+   a short hand from push with auto fetching detection
+   
+- `gite update`
+
+  to install the last version
+  
+- `gite version` `gite -v`  
+
+
 # Contributing
 I welcome all contributions! Feel free to open an issue or submit a PR!
 # License

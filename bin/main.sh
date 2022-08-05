@@ -20,7 +20,11 @@ case $1 in
     cat logs/$2
 ;;
     version|-v)
+<<<<<<< HEAD
     echo $(node $DIR/version.ts)
+=======
+    echo $(node version.ts)
+>>>>>>> bcb9b5691ae9edd71c9abc1b6d4503119891ab63
 ;;
     update)
     sudo npm i -g cli-gite
