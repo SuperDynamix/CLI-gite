@@ -1,6 +1,6 @@
 {
   "name": "cli-gite",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "CLI to make git easy for developers with GPG key signed commits, and A lot automated commands",
   "main": "main.sh",
   "scripts": {
