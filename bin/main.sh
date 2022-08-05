@@ -2,7 +2,8 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
-source $DIR/config.sh
+source $DIR/commands/pushing.sh
+source config.sh
 
 # GPG settings 
 #setup the CLI
@@ -11,10 +12,19 @@ source $DIR/config.sh
 case $1 in
     repo)
         initrepo
-    ;;
+;;
     push|-p)
-    echo -e "${GREEN}push${COLOR}"
-    ;;
+      push
+;;
+    log)
+    cat logs/$2
+;;
+    version|-v)
+    echo $(node version.ts)
+;;
+    update)
+    sudo npm i -g cli-gite
+;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.
 Read the doc on https://github.com/Mahmoudgalalz/CLI-egit
