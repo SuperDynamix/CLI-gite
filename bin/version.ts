@@ -1,2 +1,2 @@
 const pjson=require('../package.json')
-console.log(`${pjson.version}v`)
+console.log(`v${pjson.version}`)
