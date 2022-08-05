@@ -20,18 +20,13 @@ case $1 in
     cat logs/$2
 ;;
     version|-v)
-<<<<<<< HEAD
     echo $(node $DIR/version.ts)
-=======
-    echo $(node version.ts)
->>>>>>> bcb9b5691ae9edd71c9abc1b6d4503119891ab63
 ;;
     update)
     sudo npm i -g cli-gite
 ;;
     *)
     echo -e "💻 Gite is a sample CLI to make it very sample.
-Read the doc on https://github.com/Mahmoudgalalz/CLI-egit
-"
+Read the doc on https://github.com/Mahmoudgalalz/CLI-egit"
 ;;
 esac
