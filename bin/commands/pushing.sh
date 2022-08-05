@@ -26,13 +26,13 @@ push(){
   echo -e "${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
 fi
 
-  git push $remote $branch 2>$DIR/logs/push_err.log
+  git push $remote $branch 2>>$DIR/logs/push_err.log
 
-if [ -f "$DIR/logs/push_err.log" ]
+if [ -s "$DIR/logs/push_err.log" ]
   then psh=$(node $DIR/regex.ts)
   if [ "$psh" == "fetch" ]
 
-  then echo -ne "${RED}There's a new updates on the repo to fetch, do    you want to fetch them before pushing? (Y/N)${COLOR}"
+  then echo -ne "${RED}There's a new updates on the repo to fetch, do you want to fetch them before pushing? (Y/N)${COLOR}"
 
   read fr
 #
