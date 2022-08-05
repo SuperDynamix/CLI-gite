@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-#chmod +x install.sh
+
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
 source $DIR/bin/config.sh
 GPGstate=false
 setup(){
@@ -34,4 +35,4 @@ then
     setup
 
 fi
-echo "GPG_STATE=$GPGstate" >> $DIR/bin/config.sh
+echo "GPG_STATE=$GPGstate" >> $DIR/bin/.gpg
