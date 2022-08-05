@@ -4,4 +4,4 @@ RED="\e[31m"
 YELLOW="\e[93m"
 GREEN="\e[32m"
 
-GPG_STATE=false
+GPG_STATE=true
