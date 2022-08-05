@@ -3,7 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
 source $DIR/commands/pushing.sh
-source config.sh
+source $DIR/config.sh
 
 # GPG settings 
 #setup the CLI
