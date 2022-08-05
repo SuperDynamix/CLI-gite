@@ -1,2 +1,4 @@
-error: src refspec testing does not match any
-error: failed to push some refs to 'https://github.com/Mahmoudgalalz/CLI-egit.git'
+remote: This repository moved. Please use the new location:        
+remote:   https://github.com/Mahmoudgalalz/CLI-gite.git        
+To https://github.com/Mahmoudgalalz/CLI-egit.git
+   f0bc2b1..04dbc52  testing -> testing

@@ -23,7 +23,7 @@ push(){
   then git commit -S -m "${commit}" > /dev/null
   echo -e "${GREEN}Committing using GPG signature${COLOR}"
   else git commit -m "${commit}" >/dev/null
-  echo -e"${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
+  echo -e "${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
 fi
 
   git push $remote $branch 2>$DIR/logs/push_err.log
@@ -31,7 +31,7 @@ fi
 if [ -f "$DIR/logs/push_err.log" ]
   then psh=$(node $DIR/regex.ts)
   if [ "$psh" == "fetch" ]
-  then echo -ne "${RED}There's a new updates on the repo to fetch, do    you want to fetch them before pushing? (Y/N)${COLOR}"
+  then echo -ne "${RED}There's a new updates on the repo to fetch, do you want to fetch them before pushing? (Y/N)${COLOR}"
   read fr
 #
   if [ [ "$fr" == "y" ] || [ "$fr" == "Y" ] || [ -z "$fr" ] ]
@@ -40,7 +40,7 @@ if [ -f "$DIR/logs/push_err.log" ]
   echo "Files added to the flow with your commit."
   fi
 #
-else echo -ne "There's an error happend check the log, use gite log push_err.log"
+else echo -e "There's an error happend check the log, use gite log push_err.log"
 fi
 fi
 }
