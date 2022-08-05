@@ -31,9 +31,9 @@ now you can use `gite` :tada:
 - [ :heavy_check_mark: ] creating dir with init git
 - [ :heavy_check_mark: ] add remote
 - [ :heavy_check_mark: ] adding gpg key to your commits
-- [ ] push to any branch without do an adding just put your commit
+- [ :heavy_check_mark: ] push to any branch without do an adding just put your commit
 - [ ] short-hand push
-- [ ] auto fetching if there's something to fetch
+- [ :heavy_check_mark: ] auto fetching if there's something to fetch
 
 # Commands
 - `gite repo`
