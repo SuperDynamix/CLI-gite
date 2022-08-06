@@ -28,7 +28,7 @@ fi
 
   sudo git push $remote $branch 2>> ~/push_err.log
 
-if [ -s "$DIR/logs/push_err.log" ]
+if [ -s "~/push_err.log" ]
   then psh=$(node $DIR/regex.ts)
   if [ "$psh" == "fetch" ]
 
@@ -44,6 +44,7 @@ if [ -s "$DIR/logs/push_err.log" ]
 #
 else echo -e "There's an error happend check the log, use gite log push_err.log"
 fi
+else echo -e "${GREEN}all files pushed to the $branch branch..!${COLOR}"
 fi
 }
 
