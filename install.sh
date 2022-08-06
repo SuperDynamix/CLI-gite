@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-
+sudo chmod +x install.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 source $DIR/bin/config.sh

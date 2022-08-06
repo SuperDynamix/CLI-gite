@@ -16,7 +16,7 @@ https://docs.github.com/en/authentication/managing-commit-signature-verification
 1. `sudo npm i -g cli-gite`
 why -g to use it everywhere
 2. then install it
-`. ~/../../usr/local/lib/node_modules/cli-gite/install.sh`
+`sudo ~/../../usr/local/lib/node_modules/cli-gite/install.sh`
 
 ![Screenshot from 2022-07-29 21-25-10](https://user-images.githubusercontent.com/42272376/181830387-cc807cdd-09dc-4d2e-99ab-c8cd34fd6076.png)
 
