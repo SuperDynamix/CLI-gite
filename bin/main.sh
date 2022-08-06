@@ -17,7 +17,7 @@ case $1 in
       push
 ;;
     log)
-    cat logs/$2
+    cat ~/$2
 ;;
     version|-v)
     echo $(node $DIR/version.ts)
