@@ -3,9 +3,6 @@
   "version": "1.2.7",
   "description": "CLI to make git easy for developers with GPG key signed commits, and A lot automated commands",
   "main": "main.sh",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "bash",
     "automate",
