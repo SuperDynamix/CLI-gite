@@ -10,6 +10,9 @@ source $DIR/config.sh
 #
 
 case $1 in
+    setup)
+    $DIR/../install.sh
+    ;;
     repo)
         initrepo
 ;;
