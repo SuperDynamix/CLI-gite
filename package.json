@@ -18,7 +18,7 @@
     "url": "https://github.com/mahmoudgalalz/cli-gite/issues"
   },
   "bin": {
-    "gite": "bin/gite.ts"
+    "gite": "bin/gite.js"
   },
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
   "license": "MIT",

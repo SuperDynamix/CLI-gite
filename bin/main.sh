@@ -29,7 +29,7 @@ case $1 in
     sudo npm i -g cli-gite
 ;;
     *)
-    echo -e "💻 Gite is a sample CLI to make it very sample.
+    echo -e "💻 Gite is the right hand for most develpers.
 Read the doc on https://github.com/Mahmoudgalalz/CLI-egit"
 ;;
 esac
