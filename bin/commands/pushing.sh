@@ -29,7 +29,7 @@ fi
   git push $remote $branch 2>> ~/push_err.log
 
 if [ -s "~/push_err.log" ]
-  then psh=$(node $DIR/regex.ts)
+  then psh=$(node $DIR/regex.cjs)
   if [ "$psh" == "fetch" ]
 
   then echo -ne "${RED}There's a new updates on the repo to fetch, do you want to fetch them before pushing? (Y/N)${COLOR}"

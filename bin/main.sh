@@ -23,10 +23,10 @@ case $1 in
     cat ~/$2
 ;;
     version|-v)
-    echo $(node $DIR/version.ts)
+    echo $(node $DIR/version.cjs)
 ;;
-    update)
-    sudo npm i -g cli-gite
+    test)
+    echo $(node $DIR/regex.cjs)
 ;;
     *)
     echo -e "💻 Gite is the right hand for most develpers.
