@@ -10,6 +10,9 @@ source $DIR/config.sh
 #
 
 case $1 in
+    setup)
+    $DIR/../install.sh
+    ;;
     repo)
         initrepo
 ;;
@@ -20,13 +23,13 @@ case $1 in
     cat ~/$2
 ;;
     version|-v)
-    echo $(node $DIR/version.ts)
+    echo $(node $DIR/version.cjs)
 ;;
-    update)
-    sudo npm i -g cli-gite
+    test)
+    echo $(node $DIR/regex.cjs)
 ;;
     *)
-    echo -e "💻 Gite is a sample CLI to make it very sample.
+    echo -e "💻 Gite is the right hand for most develpers.
 Read the doc on https://github.com/Mahmoudgalalz/CLI-egit"
 ;;
 esac
