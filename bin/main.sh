@@ -10,7 +10,7 @@ source $DIR/config.sh
 #
 
 case $1 in
-    setup)
+    gpg)
     $DIR/../install.sh
     ;;
     repo)
@@ -24,9 +24,6 @@ case $1 in
 ;;
     version|-v)
     echo $(node $DIR/version.cjs)
-;;
-    test)
-    echo $(node $DIR/regex.cjs)
 ;;
     *)
     echo -e "💻 Gite is the right hand for most develpers.

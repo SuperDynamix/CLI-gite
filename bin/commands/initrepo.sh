@@ -1,47 +1,33 @@
 # This to init repo base
 # make dir then init git
 # add a remote for this git
+# Github CLI also init
 #!/usr/bin/env bash
+
 initrepo() {
-    echo -e -n "${GREEN}Directory name for this repo: ${COLOR}"
-    read name
+    name=$(gum input --prompt.foreground "#0FF" --prompt "Directory name for this repo?: ")
+
     if [ -d "$name" ]
     then
-        echo -e -n "${RED}The directory exists, ${GREEN}Do you want to init git for this directory? $name Y/N:"
-        read irt
-        if [ "$irt" == "y" ] || [ "$irt" == "Y" ] || [ -z "$irt" ]
-        then
-        cd $name
-        git init > /dev/null
-        remoteFlow
-        fi
+        gum confirm "This directory exists, Do you want to init git for this directory" && cd $name && git init >/dev/null && remoteFlow
     else
     mkdir $name
-    echo -e -n "${GREEN}Do you want to init git for this repo? Y/N: "
-    read state
-    if [ "$state" == "y" ]  || [ "$state" == "Y" ] || [ -z "$state" ]
-        then
-        cd $name
-        git init > /dev/null
-        remoteFlow
-    fi
+    cd $name
+    git init >/dev/null
+    remoteFlow
 fi
     }
 
 remoteFlow(){
- echo -e -n "${GREEN}What's the repo's remote? (ignore if none exist): $COLOR"
- read remote
- 
- if [ ! -z $remote ]
+    remote=$(gum input --prompt.foreground "#0FF" --prompt "Repo's link (remote): ")
+    als=$(gum input --prompt.foreground "#0FF" --prompt "Alias: ")
+ if [ ! -z "$remote" ]
     then
-    echo -e -n "${GREEN}What's the alias for this remote (defualt: origin): $COLOR"
-    read als 
-    if [ ! -z $als ]
-    then git remote add $als $remote > /dev/null
-    else git remote add origin $remote > /dev/null
-fi
-    echo -e "${YELLOW}Remote established within the directory"
+    git remote add $als $remote > /dev/null
+    gum spin --spinner jump --title.foreground "#f52" --title "establishing the directory within the remote" sleep 1
+    echo ':monkey: Everything done!'|gum format -t emoji
  else
-    echo -e "${YELLOW}Directory is created with init git use code . to open VSCode"
+    echo -e "${RED}no remote setup for this directory"
 fi
+
 }
