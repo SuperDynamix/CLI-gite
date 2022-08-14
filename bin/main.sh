@@ -3,6 +3,7 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
 source $DIR/commands/pushing.sh
+source $DIR/commands/checkout.sh
 source $DIR/config.sh
 
 # GPG settings 
@@ -22,6 +23,8 @@ case $1 in
     log)
     cat ~/$2
 ;;
+    checkout)
+    checkout ;;
     version|-v)
     echo $(node $DIR/version.cjs)
 ;;
