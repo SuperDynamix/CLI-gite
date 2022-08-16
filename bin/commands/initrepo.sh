@@ -17,7 +17,6 @@ initrepo() {
     remoteFlow
 fi
     }
-
 remoteFlow(){
     remote=$(gum input --prompt.foreground "#0FF" --prompt "Repo's link (remote): ")
     als=$(gum input --prompt.foreground "#0FF" --prompt "Alias: ")
