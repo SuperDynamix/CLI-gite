@@ -1,16 +1,7 @@
-# error handling for git fetch problem
-# basic pushing
-# short-hand push
-#interactive selection for branches and remotes
+
 cur_dir=$(pwd)
+log=~/push_err.log
 push(){
-    # The process 
-    #1- add all (git add -A)
-    #2- commit there's two options
-    # - With GPG users so use (git commit -S -m "the commit")
-    # - without GPG (git commit -m "")
-    #3- pushing to spcifiac branch with spcifaic remote
-    
     #inputs
     commit=$(gum input --prompt.foreground "#f52" --prompt "Write your: " --placeholder "commit")
     branch=$(ls $cur_dir/.git/refs/heads | gum filter --placeholder "Which branch you want to push from")
@@ -26,10 +17,9 @@ push(){
     else git commit -m "${commit}" >/dev/null
     echo ':clown_face: Commiting without using GPG signature !'|gum format -t emoji
 fi
-
-  git push $remote $branch 2> ~/push_err.log
-
-  log=~/push_err.log
+  rm log
+  git push $remote $branch 2>> log
+  
 if [ -s "$log" ]
   then psh=$(node $DIR/regex.cjs)
   if [ "$psh" == "fetch" ]
@@ -45,7 +35,7 @@ fetch_push(){
   git pull $1 $2 > /dev/null
   gum spin --spinner jump --title.foreground "#f52" --title "Fetching the new Files" sleep 1
   git push $1 $2 > /dev/null
-  rm ~/push_err.log
+  rm log
   gum spin --spinner jump --title.foreground "#f52" --title "Pushing the files to the repo" sleep 1
   echo "We made it yaaaay:tada:"|gum format -t emoji
 
