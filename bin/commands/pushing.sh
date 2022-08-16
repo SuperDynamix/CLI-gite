@@ -17,8 +17,8 @@ push(){
     else git commit -m "${commit}" >/dev/null
     echo ':clown_face: Commiting without using GPG signature !'|gum format -t emoji
 fi
-  rm log
-  git push $remote $branch 2>> log
+  rm ~/push_err.log
+  git push $remote $branch 2>> ~/push_err.log
   
 if [ -s "$log" ]
   then psh=$(node $DIR/regex.cjs)
@@ -35,7 +35,7 @@ fetch_push(){
   git pull $1 $2 > /dev/null
   gum spin --spinner jump --title.foreground "#f52" --title "Fetching the new Files" sleep 1
   git push $1 $2 > /dev/null
-  rm log
+  rm ~/push_err.log
   gum spin --spinner jump --title.foreground "#f52" --title "Pushing the files to the repo" sleep 1
   echo "We made it yaaaay:tada:"|gum format -t emoji
 
