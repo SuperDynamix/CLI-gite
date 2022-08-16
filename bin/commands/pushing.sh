@@ -25,6 +25,8 @@ if [ -s "$log" ]
   if [ "$psh" == "fetch" ]
   then
   gum confirm "There's a new updates on the repo to fetch, do you want to fetch them?" && fetch_push $remote $branch
+  else rm ~/push_err.log
+  echo "Nothing to be pulled, we pushed your work :dart:"|gum format -t emoji
 fi
 else
 echo "Nothing to be pulled, we pushed your work :dart:"|gum format -t emoji
