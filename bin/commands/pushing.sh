@@ -29,30 +29,24 @@ fi
 
   git push $remote $branch 2> ~/push_err.log
 
-
-if [ -s "~/push_err.log" ]
+  log=~/push_err.log
+if [ -s "$log" ]
   then psh=$(node $DIR/regex.cjs)
   if [ "$psh" == "fetch" ]
-
-  then echo -ne "${RED}There's a new updates on the repo to fetch, do you want to fetch them before pushing? (Y/N)${COLOR}"
-
-  read fr
-#
-  if [ [ "$fr" == "y" ] || [ "$fr" == "Y" ] || [ -z "$fr" ] ]
-  then fetch_push $remote $branch
-  else
-  echo "Files added to the flow with your commit."
-  fi
-#
-else echo -e "There's an error happend check the log, use gite log push_err.log"
+  then
+  gum confirm "There's a new updates on the repo to fetch, do you want to fetch them?" && fetch_push $remote $branch
+  else echo ":clown_face: There's an error happend check the log, use gite log push_err.log"|gum format -t emoji
 fi
-else echo -e "${GREEN}all files pushed to the $branch branch..!${COLOR}"
+else echo "Nothing to be pulled, we pushed your work :dart:"|gum format -t emoji
 fi
 }
 
 fetch_push(){
- git pull $1 $2
-  git push $1 $2
-rm $DIR/logs/push_err.log
-echo "${GREEN}Fetching the new files, and pushing!${COLOR}"
+  git pull $1 $2 > /dev/null
+  gum spin --spinner jump --title.foreground "#f52" --title "Fetching the new Files" sleep 1
+  git push $1 $2 > /dev/null
+  rm ~/push_err.log
+  gum spin --spinner jump --title.foreground "#f52" --title "Pushing the files to the repo" sleep 1
+  echo "We made it yaaaay:tada:"|gum format -t emoji
+
 }
