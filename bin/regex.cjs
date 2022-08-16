@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 const fs=require('fs')
+const os=require('os')
+const dir=os.homedir()
 
-
-let fileName='logs/push_err.log'
+let fileName=`${dir}/push_err.log`
 const regx=/git pull/
 fs.readFile(fileName,(err,data)=>{
   if(err) throw err

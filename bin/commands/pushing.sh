@@ -2,6 +2,7 @@
 # basic pushing
 # short-hand push
 #interactive selection for branches and remotes
+cur_dir=$(pwd)
 push(){
     # The process 
     #1- add all (git add -A)
@@ -9,24 +10,25 @@ push(){
     # - With GPG users so use (git commit -S -m "the commit")
     # - without GPG (git commit -m "")
     #3- pushing to spcifiac branch with spcifaic remote
-    echo -ne "${YELLOW}write your commit: ${COLOR}"
-    read commit
-    echo -ne "${YELLOW}which branch you want to push from: ${COLOR}"
-    read branch
-    echo -ne "${YELLOW}which remote you want to push to: ${COLOR}"
-    read remote
-    #make sure you are in the branch you want to push
+    
+    #inputs
+    commit=$(gum input --prompt.foreground "#f52" --prompt "Write your: " --placeholder "commit")
+    branch=$(ls $cur_dir/.git/refs/heads | gum filter --placeholder "Which branch you want to push from")
+    remote=$(git remote | gum filter --placeholder "select the remote")
+
+    #operations
     git checkout $branch > /dev/null
-    git add -A
-    echo -e "${GREEN}Added all file that been modified..${COLOR}"
-  if [ -s $DIR/.gpg ]
-  then git commit -S -m "${commit}" > /dev/null
-  echo -e "${GREEN}Committing using GPG signature${COLOR}"
-  else git commit -m "${commit}" >/dev/null
-  echo -e "${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
+    git add -A && gum spin --spinner jump --title.foreground "#f52" --title "Adding all files to the stage" sleep 1
+    echo ':ghost: Files added to the Stage '|gum format -t emoji
+    if [ -e $DIR/.gpg ]
+    then git commit -S -m "${commit}" > /dev/null
+    echo ':alien: Commiting using GPG signature '|gum format -t emoji
+    else git commit -m "${commit}" >/dev/null
+    echo ':clown_face: Commiting without using GPG signature !'|gum format -t emoji
 fi
 
-  git push $remote $branch 2>> ~/push_err.log
+  git push $remote $branch 2> ~/push_err.log
+
 
 if [ -s "~/push_err.log" ]
   then psh=$(node $DIR/regex.cjs)

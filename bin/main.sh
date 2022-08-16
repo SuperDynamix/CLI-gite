@@ -9,7 +9,7 @@ source $DIR/config.sh
 # GPG settings 
 #setup the CLI
 #
-
+export GUM_INPUT_CURSOR_FOREGROUND="#F7B511"
 case $1 in
     gpg)
     $DIR/../install.sh
