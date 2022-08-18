@@ -6,7 +6,6 @@
 
 initrepo() {
     name=$(gum input --prompt.foreground "#0FF" --prompt "Directory name for this repo?: ")
-
     if [ -d "$name" ]
     then
         gum confirm "This directory exists, Do you want to init git for this directory" && cd $name && git init >/dev/null && remoteFlow

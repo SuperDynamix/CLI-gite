@@ -9,7 +9,10 @@
     "Git",
     "github"
   ],
-  "type":"module",
+  "scripts": {
+    "test":"./test/bats/bin/bats"
+  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/mahmoudgalalz/cli-gite.git"
