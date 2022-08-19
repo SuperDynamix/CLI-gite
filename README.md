@@ -9,6 +9,8 @@ I used NPM package to publish it, you can make your own, copy it and go a head
 
 # Requirements
 - NPM
+- gum
+- gh cli
 - GPG ( optional ) see how to install it on your OS 
 https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key
 # installation
@@ -16,7 +18,7 @@ https://docs.github.com/en/authentication/managing-commit-signature-verification
 1. `sudo npm i -g cli-gite`
 why -g to use it everywhere
 2. then install it
-`sudo ~/../../usr/local/lib/node_modules/cli-gite/install.sh`
+`gite su`
 
 ![Screenshot from 2022-07-29 21-25-10](https://user-images.githubusercontent.com/42272376/181830387-cc807cdd-09dc-4d2e-99ab-c8cd34fd6076.png)
 
@@ -38,15 +40,20 @@ now you can use `gite` :tada:
 # Commands
 - `gite repo`
 
-  to init dir with git and remote
-- `gite push`
-- 
-  pushing to spcific branch and automate fetching if there.
+to init dir with git and remote also to make a repo on github
 
-- `gite push origin main "commit" `
+- `gite repo -p` `--push`
 
-   a short hand from push with auto fetching detection
-   
+to make a github repo and push the local commits into it
+
+- `gite push` 
+
+pushing to spcific branch and automate fetching if there.
+
+- `gite checkout`
+
+  interactive checkout between branches
+  
 - `gite update`
 
   to install the last version
