@@ -1,47 +1,33 @@
-# This to init repo base
-# make dir then init git
-# add a remote for this git
+
 #!/usr/bin/env bash
+source ~/.gite_config
 initrepo() {
-    echo -e -n "${GREEN}Directory name for this repo: ${COLOR}"
-    read name
+    if [[ $1 == "--push" || $1 == "-p" ]]
+then 
+    echo "You should be in the dirctory you want to push it (Ctrl + c) if you want to exit"
+    name=$(gum input --prompt.foreground "#F52" --prompt "Repo's name? " --placeholder "gite")
+    als=$(gum input --prompt.foreground "#F52" --prompt "Remote's alias " --placeholder "origin")
+    gh repo create $name --public --source=. --remote=$als --push
+else
+    name=$(gum input --prompt.foreground "#0FF" --prompt "Repo name, Dirctory name: " --placeholder "CLI-gite" )
     if [ -d "$name" ]
     then
-        echo -e -n "${RED}The directory exists, ${GREEN}Do you want to init git for this directory? $name Y/N:"
-        read irt
-        if [ "$irt" == "y" ] || [ "$irt" == "Y" ] || [ -z "$irt" ]
-        then
-        cd $name
-        git init > /dev/null
-        remoteFlow
-        fi
+        gum confirm "This directory exists, Do you want to init git for this directory" && cd $name && git init >/dev/null \
+        || echo "git init didn't work"
     else
-    mkdir $name
-    echo -e -n "${GREEN}Do you want to init git for this repo? Y/N: "
-    read state
-    if [ "$state" == "y" ]  || [ "$state" == "Y" ] || [ -z "$state" ]
-        then
-        cd $name
-        git init > /dev/null
-        remoteFlow
+    mkdir $name && cd $name
+    git init >/dev/null
     fi
-fi
-    }
+    gum confirm "Do you want to create a repo on your github account?" && als=$(gum input --prompt.foreground "#0FF" --prompt "Remote's alias:" --placeholder "origin") && gh repo create $name --public --source=. --remote=$als \
+    && gum spin --spinner jump --title.foreground "#f52" --title "Creating your repo..." sleep 1 \
+    && echo $(git remote -v) || echo ':red_circle: cannot create a repo on github'|gum format -t emoji
 
-remoteFlow(){
- echo -e -n "${GREEN}What's the repo's remote? (ignore if none exist): $COLOR"
- read remote
- 
- if [ ! -z $remote ]
-    then
-    echo -e -n "${GREEN}What's the alias for this remote (defualt: origin): $COLOR"
-    read als 
-    if [ ! -z $als ]
-    then git remote add $als $remote > /dev/null
-    else git remote add origin $remote > /dev/null
 fi
-    echo -e "${YELLOW}Remote established within the directory"
- else
-    echo -e "${YELLOW}Directory is created with init git use code . to open VSCode"
-fi
+
+}
+main_repo(){
+    if [[ $gh_installed == "true" ]]
+    then initrepo
+    else echo ":red_circle: cannot run this command, you need to install github cli, or do the gite setup if you already have the gh cli" | gum format -t emoji
+    fi
 }

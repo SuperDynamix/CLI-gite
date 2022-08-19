@@ -1,56 +1,46 @@
-# error handling for git fetch problem
-# basic pushing
-# short-hand push
-#interactive selection for branches and remotes
+
+cur_dir=$(pwd)
+log=~/push_err.log
+source ~/.gite_config
+
 push(){
-    # The process 
-    #1- add all (git add -A)
-    #2- commit there's two options
-    # - With GPG users so use (git commit -S -m "the commit")
-    # - without GPG (git commit -m "")
-    #3- pushing to spcifiac branch with spcifaic remote
-    echo -ne "${YELLOW}write your commit: ${COLOR}"
-    read commit
-    echo -ne "${YELLOW}which branch you want to push from: ${COLOR}"
-    read branch
-    echo -ne "${YELLOW}which remote you want to push to: ${COLOR}"
-    read remote
-    #make sure you are in the branch you want to push
+    #inputs
+    commit=$(gum input --prompt.foreground "#f52" --prompt "Write your: " --placeholder "commit")
+    branch=$(ls $cur_dir/.git/refs/heads | gum filter --placeholder "Which branch you want to push from")
+    remote=$(git remote | gum filter --placeholder "select the remote")
+
+    #operations
     git checkout $branch > /dev/null
-    git add -A
-    echo -e "${GREEN}Added all file that been modified..${COLOR}"
-  if [ -s $DIR/.gpg ]
-  then git commit -S -m "${commit}" > /dev/null
-  echo -e "${GREEN}Committing using GPG signature${COLOR}"
-  else git commit -m "${commit}" >/dev/null
-  echo -e "${YELLOW}Committing without using GPG KEY, to apply it read the doc and do reinstall to the CLI${COLOR}"
+    git add -A && gum spin --spinner jump --title.foreground "#f52" --title "Adding all files to the stage" sleep 1
+    echo ':ghost: Files added to the Stage '|gum format -t emoji
+    if [[ $gpg_auth == "true" ]]
+    then git commit -S -m "${commit}" > /dev/null
+    echo ':alien: Commiting using GPG signature '|gum format -t emoji
+    else git commit -m "${commit}" >/dev/null
+    echo ':clown_face: Commiting without using GPG signature !'|gum format -t emoji
 fi
-
+  
   git push $remote $branch 2>> ~/push_err.log
-
-if [ -s "~/push_err.log" ]
-  then psh=$(node $DIR/regex.ts)
+  
+if [ -s "$log" ]
+  then psh=$(node $DIR/regex.cjs)
   if [ "$psh" == "fetch" ]
-
-  then echo -ne "${RED}There's a new updates on the repo to fetch, do you want to fetch them before pushing? (Y/N)${COLOR}"
-
-  read fr
-#
-  if [ [ "$fr" == "y" ] || [ "$fr" == "Y" ] || [ -z "$fr" ] ]
-  then fetch_push $remote $branch
-  else
-  echo "Files added to the flow with your commit."
-  fi
-#
-else echo -e "There's an error happend check the log, use gite log push_err.log"
+  then
+  gum confirm "There's a new updates on the repo to fetch, do you want to fetch them?" && fetch_push $remote $branch
+  else rm ~/push_err.log
+  echo "Nothing to be pulled, we pushed your work :dart:"|gum format -t emoji
 fi
-else echo -e "${GREEN}all files pushed to the $branch branch..!${COLOR}"
+else
+echo "Nothing to be pulled, we pushed your work :dart:"|gum format -t emoji
 fi
 }
 
 fetch_push(){
- git pull $1 $2
-  git push $1 $2
-rm $DIR/logs/push_err.log
-echo "${GREEN}Fetching the new files, and pushing!${COLOR}"
+  git pull $1 $2 > /dev/null
+  gum spin --spinner jump --title.foreground "#f52" --title "Fetching the new Files" sleep 1
+  git push $1 $2 > /dev/null
+  rm ~/push_err.log
+  gum spin --spinner jump --title.foreground "#f52" --title "Pushing the files to the repo" sleep 1
+  echo "We made it yaaaay:tada:"|gum format -t emoji
+
 }

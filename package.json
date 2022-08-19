@@ -1,8 +1,7 @@
 {
   "name": "cli-gite",
-  "version": "1.2.7",
+  "version": "1.3.0",
   "description": "CLI to make git easy for developers with GPG key signed commits, and A lot automated commands",
-  "main": "main.sh",
   "keywords": [
     "bash",
     "automate",
@@ -10,12 +9,19 @@
     "Git",
     "github"
   ],
+  "scripts": {
+    "test":"./test/bats/bin/bats"
+  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/mahmoudgalalz/cli-gite.git"
   },
   "bugs": {
     "url": "https://github.com/mahmoudgalalz/cli-gite/issues"
+  },
+  "bin": {
+    "gite": "bin/gite.js"
   },
   "author": "Mahmoud Galal <ssss.aaa2002@gmail.com>",
   "license": "MIT",

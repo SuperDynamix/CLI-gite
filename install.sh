@@ -1,38 +1,38 @@
 #!/usr/bin/env bash
+#define the machine and os and 
 
-sudo chmod +x install.sh
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
 source $DIR/bin/config.sh
-GPGstate=false
-setup(){
-#via NPM package
-#usr/local/node_module/${packageName}/bin/main.sh
-    echo "#Aliases for Gite command line utility - Do not delete if you still use Gite" >> ~/.bash_aliases
-    echo "alias gite='. ~/../../usr/local/lib/node_modules/cli-gite/bin/main.sh'" >> ~/.bash_aliases
-    echo "alias Gite='. ~/../../usr/local/lib/node_modules/cli-gite/bin/main.sh'" >> ~/.bash_aliases
-    echo -e "Every things is done👌, Try Gite on your terminal"
-    #. ~/../../usr/local/lib/node_modules/cli-gite && ./install.sh
+
+get_os(){
+    case "$(uname -s)" in
+    *linux* | *Linux*) echo "linux";;
+    *drawin* | *Drawin*) echo "drawin";;
+    esac
 }
 
-echo -e "${GREEN}Installing CLI Gite..."
-echo -e -n "${GREEN}Do you want to use GPG KEY settings? (Y/N): "
-read st
+get_machine(){
+    case "$(uname -m)" in
+    "x86_64"|"amd64"|"x64") echo "amd64";;
+    "i386"|"i86pc"|"x86"|"i686")
+      echo "i386" ;;
+    "arm64"|"armv6l"|"aarch64")
+      echo "arm64";;
+  esac
+}
 
-if [ "$st" == "y" ] || [ "$st" == "Y" ] || [ -z $st ] 
+
+
+gum confirm "Do you want to setup GPG key?" && KEY=$(gum input --placeholder "What's your GPG KEY")
+
+if [ ! -z "$KEY" ]
 then 
     GPGstate=true
-    echo -e "${GREEN}Read the Gite documantion about GPG KEY"
-    echo -e -n "${GREEN}What's your GPG KEY: "
-    read KEY
     git config --global user.signingkey $KEY
     echo -e "${YELLOW}Your GPG key is applied to git"
-    setup
-    
-    else
+
+else
     echo -e "${GREEN}GPG KEY options is not applied"
-
-    setup
-
 fi
-echo "GPG_STATE=$GPGstate" >> $DIR/bin/.gpg
+
+echo "GPG_STATE=$GPGstate" > $DIR/bin/.gpg

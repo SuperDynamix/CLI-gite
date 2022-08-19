@@ -3,15 +3,16 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
 source $DIR/commands/pushing.sh
-source $DIR/config.sh
+source $DIR/commands/checkout.sh
 
-# GPG settings 
-#setup the CLI
-#
 
+export GUM_INPUT_CURSOR_FOREGROUND="#F7B511"
 case $1 in
+    su)
+    $DIR/setup.sh
+;;
     repo)
-        initrepo
+        main_repo $2
 ;;
     push|-p)
       push
@@ -19,14 +20,14 @@ case $1 in
     log)
     cat ~/$2
 ;;
-    version|-v)
-    echo $(node $DIR/version.ts)
+    checkout)
+    checkout 
 ;;
-    update)
-    sudo npm i -g cli-gite
+    version|-v)
+    echo $(node $DIR/version.cjs)
 ;;
     *)
-    echo -e "💻 Gite is a sample CLI to make it very sample.
+    echo -e "💻 Gite is the right hand for most develpers.
 Read the doc on https://github.com/Mahmoudgalalz/CLI-egit"
 ;;
 esac
