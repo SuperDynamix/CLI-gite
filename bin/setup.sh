@@ -18,9 +18,9 @@ gh_setup(){
     gum input --cursor.foreground "#FF0" --prompt.foreground "#0FF" --prompt "Github TOKEN: " --width 80 --placeholder "get it from github" > ~/.gh_token
     gh auth login --with-token < ~/.gh_token
     echo "gh_installed=true" >> ~/.gite_config
-    echo ':green_circle: gh auth has been setup'|gum format -t emoji
+    echo ':green_circle: gh auth has been setup'| gum format -t emoji
     else
-    echo ':yellow_circle: Install github cli to do the setup'|gum format -t emoji
+    echo ':yellow_circle: Install github cli to do the setup'| gum format -t emoji
     fi
     
 }
@@ -45,9 +45,9 @@ gpg_setup(){
     KEY=$(gum input --cursor.foreground "#FF0" --prompt.foreground "#0FF" --prompt "GPG KEY: " --width 80 --placeholder "Key?") \
     && echo "gpg_auth=true" >> ~/.gite_config \
     && git config --global user.signingkey $KEY \
-    && echo ':green_circle: GPG Key has been setup'|gum format -t emoji || echo ":red_circle: GPG key not installed as you choose"
+    && echo ':green_circle: GPG Key has been setup'|gum format -t emoji || echo ":red_circle: GPG key not installed as you choose" | gum format -t emoji
     else
-    echo ':yellow_circle: Install gpg and follow the docs'|gum format -t emoji
+    echo ':yellow_circle: Install gpg and follow the docs'| gum format -t emoji
     fi
 }
 
@@ -56,7 +56,7 @@ gpg_setup(){
 main(){
     gh_setup
     gpg_setup
-    echo ':Green_circle: now you can use any feature in gite'|gum format -t emoji
+    echo ':green_circle: now you can use any feature in gite'| gum format -t emoji
 
 }
 main
