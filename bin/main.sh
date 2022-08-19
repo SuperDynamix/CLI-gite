@@ -4,13 +4,13 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source $DIR/commands/initrepo.sh
 source $DIR/commands/pushing.sh
 source $DIR/commands/checkout.sh
-source $DIR/config.sh
+
 
 export GUM_INPUT_CURSOR_FOREGROUND="#F7B511"
 case $1 in
-    gpg)
-    $DIR/../install.sh
-    ;;
+    su)
+    $DIR/setup.sh
+;;
     repo)
         initrepo
 ;;
@@ -21,7 +21,8 @@ case $1 in
     cat ~/$2
 ;;
     checkout)
-    checkout ;;
+    checkout 
+;;
     version|-v)
     echo $(node $DIR/version.cjs)
 ;;

@@ -1,6 +1,8 @@
 
 cur_dir=$(pwd)
 log=~/push_err.log
+source ~/.gite_config
+
 push(){
     #inputs
     commit=$(gum input --prompt.foreground "#f52" --prompt "Write your: " --placeholder "commit")
@@ -11,7 +13,7 @@ push(){
     git checkout $branch > /dev/null
     git add -A && gum spin --spinner jump --title.foreground "#f52" --title "Adding all files to the stage" sleep 1
     echo ':ghost: Files added to the Stage '|gum format -t emoji
-    if [ -e $DIR/.gpg ]
+    if [[ $gpg_auth == "true" ]]
     then git commit -S -m "${commit}" > /dev/null
     echo ':alien: Commiting using GPG signature '|gum format -t emoji
     else git commit -m "${commit}" >/dev/null
