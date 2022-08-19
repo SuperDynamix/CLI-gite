@@ -1,0 +1,8 @@
+.gitignore
+.gitmodules
+
+
+init.mod
+init.sum
+test
+/bin/testing.sh

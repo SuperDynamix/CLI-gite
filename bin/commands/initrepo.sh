@@ -1,9 +1,6 @@
-# This to init repo base
-# make dir then init git
-# add a remote for this git
-# Github CLI also init
-#!/usr/bin/env bash
 
+#!/usr/bin/env bash
+source ~/.gite_config
 initrepo() {
     if [[ $1 == "--push" || $1 == "-p" ]]
 then 
@@ -27,4 +24,10 @@ else
 
 fi
 
+}
+main_repo(){
+    if [[ $gh_installed == "true" ]]
+    then initrepo
+    else echo ":red_circle: cannot run this command, you need to install github cli, or do the gite setup if you already have the gh cli" | gum format -t emoji
+    fi
 }

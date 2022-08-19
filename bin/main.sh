@@ -12,7 +12,7 @@ case $1 in
     $DIR/setup.sh
 ;;
     repo)
-        initrepo $2
+        main_repo $2
 ;;
     push|-p)
       push
