@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
 #1- gh auth
+is_gh_installed() {
+    check=$(gh --version)
+    pattern='\<gh version\>'
+    if [[ $check =~ $pattern ]]
+    then return 1
+    fi
+    return 0
+}
+
 gh_setup(){
     #check if gh is installed
     is_gh_installed
@@ -16,17 +25,18 @@ gh_setup(){
     
 }
 
-is_gh_installed() {
-    check=$(gh --version)
-    pattern='\<gh version\>'
-    if [[ $check =~ $pattern ]]
+
+
+#2- gpg key
+is_gpg_installed(){
+    value=$(gpg --version)
+    patt='\<(GnuPG)\>'
+    if [[ $value =~ $patt ]]
     then return 1
     fi
     return 0
-
 }
 
-#2- gpg key
 gpg_setup(){
     is_gpg_installed
     if [[ $? -eq 1 ]]
@@ -40,15 +50,8 @@ gpg_setup(){
     echo ':yellow_circle: Install gpg and follow the docs'|gum format -t emoji
     fi
 }
-is_gpg_installed(){
-    value=$(gpg --version)
-    patt='\<(GnuPG)\>'
-    if [[ $value =~ $patt ]]
-    then return 1
-    fi
-    return 0
-}
-#3- some aliases
+
+#3- some aliases --not done
 
 main(){
     gh_setup

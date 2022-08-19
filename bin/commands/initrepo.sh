@@ -5,27 +5,26 @@
 #!/usr/bin/env bash
 
 initrepo() {
-    name=$(gum input --prompt.foreground "#0FF" --prompt "Directory name for this repo?: ")
+    if [[ $1 == "--push" || $1 == "-p" ]]
+then 
+    echo "You should be in the dirctory you want to push it (Ctrl + c) if you want to exit"
+    name=$(gum input --prompt.foreground "#F52" --prompt "Repo's name? " --placeholder "gite")
+    als=$(gum input --prompt.foreground "#F52" --prompt "Remote's alias " --placeholder "origin")
+    gh repo create $name --public --source=. --remote=$als --push
+else
+    name=$(gum input --prompt.foreground "#0FF" --prompt "Repo name, Dirctory name: " --placeholder "CLI-gite" )
     if [ -d "$name" ]
     then
-        gum confirm "This directory exists, Do you want to init git for this directory" && cd $name && git init >/dev/null && remoteFlow
+        gum confirm "This directory exists, Do you want to init git for this directory" && cd $name && git init >/dev/null \
+        || echo "git init didn't work"
     else
-    mkdir $name
-    cd $name
+    mkdir $name && cd $name
     git init >/dev/null
-    remoteFlow
-fi
-    }
-remoteFlow(){
-    remote=$(gum input --prompt.foreground "#0FF" --prompt "Repo's link (remote): ")
-    als=$(gum input --prompt.foreground "#0FF" --prompt "Alias: ")
- if [ ! -z "$remote" ]
-    then
-    git remote add $als $remote > /dev/null
-    gum spin --spinner jump --title.foreground "#f52" --title "establishing the directory within the remote" sleep 1
-    echo ':monkey: Everything done!'|gum format -t emoji
- else
-    echo -e "${RED}no remote setup for this directory"
+    fi
+    gum confirm "Do you want to create a repo on your github account?" && als=$(gum input --prompt.foreground "#0FF" --prompt "Remote's alias:" --placeholder "origin") && gh repo create $name --public --source=. --remote=$als \
+    && gum spin --spinner jump --title.foreground "#f52" --title "Creating your repo..." sleep 1 \
+    && echo $(git remote -v) || echo ':red_circle: cannot create a repo on github'|gum format -t emoji
+
 fi
 
 }
